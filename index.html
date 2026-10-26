@@ -1,23 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Water Quest</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H2Go! | charity: water</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Water Quest</h1>
-    <p class="game-instructions">Collect 20 items to complete the game!</p>
-    <div class="stats">
-      <p>Cans Collected: <span id="current-cans">0</span></p>
-      <p>Time Left: <span id="timer">30</span>s</p>
-    </div>
-    <div id="achievements" class="achievement"></div>
-    <div class="game-grid"></div>
-    <button id="start-game">Start Game</button>
-  </div>
+  <main class="game-shell">
+    <header class="site-header">
+      <a href="https://www.charitywater.org" target="_blank" rel="noopener noreferrer" aria-label="Visit charity: water">
+        <img src="img/cw_logo_horizontal.png" alt="charity: water">
+      </a>
+    </header>
+
+    <!-- Intro screen -->
+    <section id="intro-screen" class="screen">
+      <p class="eyebrow">A charity: water trivia game</p>
+      <h1>H2Go<span>!</span></h1>
+      <p class="screen-lead">Test your knowledge and make every answer count.</p>
+      <button id="play-button" class="pill-button accent-button">PLAY NOW</button>
+      <div class="screen-links">
+        <button id="how-to-play-link" class="text-button">How to Play</button>
+        <a class="text-button" href="https://www.charitywater.org" target="_blank" rel="noopener noreferrer">Learn More</a>
+      </div>
+    </section>
+
+    <!-- How-to-play screen -->
+    <section id="how-to-play-screen" class="screen hidden">
+      <div class="content-card">
+        <p class="eyebrow">Ready, set, go!</p>
+        <h2>How to Play</h2>
+        <ol class="rules-list">
+          <li>Answer clean-water trivia before the timer runs out.</li>
+          <li>Earn <strong>+100 points</strong> for every correct answer.</li>
+          <li>Wrong answers lose <strong>50 points</strong>.</li>
+        </ol>
+        <button id="got-it-button" class="pill-button">GOT IT</button>
+      </div>
+    </section>
+
+    <!-- Question screen -->
+    <section id="question-screen" class="screen hidden">
+      <div class="game-status">
+        <div class="status-pill">TIME <span id="timer">60</span></div>
+        <div class="status-pill">SCORE <span id="score">0</span></div>
+      </div>
+      <p id="question-number" class="question-count">Question 1 of 10</p>
+      <h2 id="question-text">Question text</h2>
+      <div id="answer-buttons" class="answer-grid"></div>
+    </section>
+
+    <!-- Feedback screen -->
+    <section id="feedback-screen" class="screen hidden">
+      <img class="water-can-icon" src="img/water-can.png" alt="">
+      <p id="feedback-points" class="feedback-points">+100</p>
+      <h2 id="feedback-title">Correct!</h2>
+      <p id="feedback-message" class="feedback-message"></p>
+      <button id="next-button" class="pill-button">NEXT</button>
+    </section>
+
+    <!-- Game-over screen -->
+    <section id="game-over-screen" class="screen hidden">
+      <img class="water-can-icon" src="img/water-can.png" alt="">
+      <p class="eyebrow">Great work!</p>
+      <h2>Game Over</h2>
+      <p class="final-score">Your Score: <strong id="final-score">0</strong></p>
+      <p id="impact-message" class="screen-lead"></p>
+      <button id="play-again-button" class="pill-button accent-button">PLAY AGAIN</button>
+    </section>
+  </main>
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
   <script src="script.js"></script>
 </body>
 </html>

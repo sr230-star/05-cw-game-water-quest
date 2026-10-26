@@ -1,143 +1,163 @@
-/* Charity: water Brand Colors & Fonts
-
-Primary Colors:
-- Yellow:     #FFC907
-- Blue:       #2E9DF7
-
-Secondary Colors:
-- Light Blue: #8BD1CB
-- Green:      #4FCB53
-- Orange:     #FF902A
-- Red:        #F5402C
-- Dark Green: #159A48
-- Pink:       #F16061
-
-Fonts:
-- Proxima Nova
-- Avenir
-
-*/
-
-* {
-  box-sizing: border-box;
+:root {
+  --cw-yellow: #FFC907;
+  --cw-navy: #003366;
+  --cw-light-blue: #77A8BB;
+  --cw-cream: #FFF7E1;
+  --cw-black: #1A1A1A;
+  --cw-peach: #FED8C1;
+  --cw-rust: #BF6C46;
+  --cw-gray: #CBCCD1;
+  --cw-white: #FFFFFF;
 }
+
+* { box-sizing: border-box; }
 
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 30px;
-  background-color: #f0f0f0;
-  color: #333;
+  min-height: 100vh;
+  background: var(--cw-cream);
+  color: var(--cw-black);
+  font-family: "Montserrat", Avenir, sans-serif;
 }
 
-.container {
-  max-width: 750px;
-  margin: 50px auto;
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+button, a { font: inherit; }
+button { cursor: pointer; }
 
-h1 {
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-h1 img {
-  height: 50px;
-  margin-right: 15px;
-  display: block;
-}
-
-.game-instructions {
-  font-size: 18px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.stats {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 30px;
-  background-color: #f5f5f5;
-  padding: 15px 0;
-  border-radius: 8px;
-}
-
-.stats p {
-  margin: 0;
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-}
-
-.game-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+.game-shell {
+  min-height: 100vh;
+  max-width: 760px;
   margin: 0 auto;
-  max-width: 500px;
+  display: flex;
+  flex-direction: column;
 }
 
-.grid-cell {
-  background-color: #e8e8e8;
-  border-radius: 8px;
-  aspect-ratio: 1;
+.site-header {
+  padding: 16px 24px;
+  text-align: center;
+}
+.site-header img {
+  height: 34px;
+  width: auto;
+  max-width: 100%;
+}
+
+.screen {
+  flex: 1;
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 65px 20px 40px;
+  text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  position: relative;
-  overflow: hidden;
+}
+.hidden { display: none; }
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--cw-light-blue);
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
-.water-can-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
-  /* Ensure the wrapper is properly centered */
-}
+h1, h2 { font-family: "Baloo 2", Avenir, sans-serif; line-height: .95; }
+h1 { margin: 0; color: var(--cw-navy); font-size: clamp(5rem, 19vw, 9.5rem); font-weight: 800; }
+h1 span { color: var(--cw-yellow); }
+h2 { margin: 0 0 24px; color: var(--cw-navy); font-size: clamp(2.2rem, 7vw, 3.8rem); }
+.screen-lead { max-width: 430px; margin: 18px auto 30px; color: var(--cw-black); font-size: 1.15rem; }
 
-.water-can {
+.pill-button {
+  min-width: 150px;
+  padding: 14px 28px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--cw-navy);
+  color: var(--cw-white);
+  font-weight: 800;
+  letter-spacing: .06em;
+  transition: transform .2s, background-color .2s;
+}
+.pill-button:hover, .pill-button:focus-visible { background: var(--cw-light-blue); transform: translateY(-2px); }
+.accent-button { background: var(--cw-navy); color: var(--cw-white); }
+.accent-button:hover, .accent-button:focus-visible { background: var(--cw-yellow); color: var(--cw-navy); }
+.text-button {
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  color: var(--cw-light-blue);
+  font-weight: 800;
+  text-decoration: underline;
+}
+.screen-links { display: flex; gap: 18px; margin-top: 20px; }
+
+.content-card {
   width: 100%;
-  height: 100%;
-  background-image: url('img/water-can.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
-  border-radius: 50%;
-  animation: popUp 0.5s cubic-bezier(0.17, 0.67, 0.34, 2);
-  transform-origin: center; /* Ensure scaling happens from the center */
+  padding: clamp(28px, 6vw, 52px);
+  border-radius: 28px;
+  background: var(--cw-white);
+  box-shadow: 0 12px 30px var(--cw-gray);
+}
+.rules-list { max-width: 470px; margin: 10px auto 32px; padding: 0; list-style: none; counter-reset: rules; text-align: left; }
+.rules-list li { display: flex; align-items: flex-start; gap: 15px; margin: 18px 0; color: var(--cw-black); font-size: 1.05rem; }
+.rules-list li::before { content: counter(rules); counter-increment: rules; flex: 0 0 32px; height: 32px; border-radius: 50%; background: var(--cw-yellow); color: var(--cw-navy); font-weight: 800; line-height: 32px; text-align: center; }
+
+.game-status { display: flex; justify-content: space-between; width: 100%; margin-bottom: 48px; }
+.status-pill { padding: 10px 18px; border-radius: 999px; background: var(--cw-navy); color: var(--cw-white); font-size: .82rem; font-weight: 800; letter-spacing: .08em; }
+.status-pill span { color: var(--cw-yellow); }
+.question-count { margin: 0 0 12px; color: var(--cw-light-blue); font-weight: 800; }
+#question-text { max-width: 620px; font-size: clamp(1.8rem, 5vw, 3rem); }
+.answer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; width: 100%; margin-top: 12px; }
+.answer-button { min-height: 78px; padding: 15px; border: 2px solid var(--cw-gray); border-radius: 18px; background: var(--cw-white); color: var(--cw-black); font-weight: 700; transition: background-color .2s, border-color .2s, transform .2s; }
+.answer-button:hover, .answer-button:focus-visible { border-color: var(--cw-navy); background: var(--cw-light-blue); transform: translateY(-2px); }
+
+.water-can-icon { width: 58px; height: 58px; object-fit: contain; margin-bottom: 18px; }
+.feedback-points { margin: 0; color: var(--cw-yellow); font-family: "Baloo 2", Avenir, sans-serif; font-size: 4.5rem; font-weight: 800; line-height: 1; }
+.feedback-points.wrong { color: var(--cw-rust); }
+#feedback-screen.wrong { background: var(--cw-peach); border-radius: 28px; }
+#feedback-screen.wrong h2 { color: var(--cw-rust); }
+.feedback-message { max-width: 520px; margin: 0 auto 30px; color: var(--cw-black); font-size: 1.1rem; }
+.final-score { margin: 0 0 18px; color: var(--cw-light-blue); font-size: 1.45rem; }
+.final-score strong { color: var(--cw-navy); }
+
+.confetti {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.confetti span {
+  position: absolute;
+  top: -12px;
+  left: var(--confetti-left);
+  width: 10px;
+  height: 16px;
+  background: var(--confetti-color);
+  opacity: 0;
+  transform: rotate(var(--confetti-rotation));
+}
+.confetti.active span {
+  animation: confetti-fall 2.8s var(--confetti-delay) ease-out forwards;
+}
+@keyframes confetti-fall {
+  0% { opacity: 1; transform: translateY(0) rotate(var(--confetti-rotation)); }
+  100% { opacity: 0; transform: translateY(105vh) rotate(calc(var(--confetti-rotation) + 540deg)); }
 }
 
-@keyframes popUp {
-  0% {
-    transform: scale(0.5); /* Start scaling from the center */
-  }
-  100% {
-    transform: scale(1); /* End scaling at full size */
-  }
+@media (max-width: 600px) {
+  .screen { padding: 38px 8px 24px; }
+  .screen-lead, .feedback-message { font-size: 1rem; }
+  .game-status { margin-bottom: 34px; }
+  .answer-grid { grid-template-columns: 1fr; }
+  .answer-button { min-height: 62px; }
+  .screen-links { gap: 4px; }
+  .site-header { padding: 14px 16px; }
 }
 
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  display: block;
-  margin: 30px auto 0;
-  transition: background-color 0.2s;
+@media (prefers-reduced-motion: reduce) {
+  .confetti { display: none; }
 }
